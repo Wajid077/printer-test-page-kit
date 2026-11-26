@@ -1,0 +1,65 @@
+/* Printer Test Page Kit - print stylesheet
+   MIT License. Physical units (mm) are used for anything that gets measured. */
+
+:root {
+  --ink: #111;
+  --muted: #555;
+  --line: #ccc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: #eee;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.toolbar h1 { font-size: 18px; margin: 0 12px 0 0; }
+.toolbar .hint { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 13px; }
+
+/* On screen the sheet previews at real size */
+.sheet {
+  margin: 16px auto;
+  padding: 10mm;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+.sheet[data-paper="a4"]     { width: 210mm; min-height: 297mm; }
+.sheet[data-paper="letter"] { width: 215.9mm; min-height: 279.4mm; }
+
+.sheet h2 { font-size: 16pt; margin: 0 0 2mm; }
+.sheet .sub { font-size: 9pt; color: var(--muted); margin: 0 0 6mm; }
+.sheet h3 { font-size: 10pt; margin: 6mm 0 2mm; }
+/* SVGs carry explicit mm sizes; never stretch them or the scale check lies */
+.sheet svg { display: block; max-width: none; }
+.sheet .scale-note { font-size: 8pt; color: var(--muted); }
+
+@media print {
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  html, body { height: auto; overflow: visible; }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    width: auto;
+    min-height: 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  /* Ask the browser to keep fills anyway, for any non-SVG colour */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

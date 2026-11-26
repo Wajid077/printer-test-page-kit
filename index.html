@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Printer Test Page Kit</title>
+<meta name="description" content="Free, dependency-free printer test pages you can print from the browser: color, black and white, nozzle check and alignment grid, for A4 and US Letter.">
+<link rel="stylesheet" href="print-test.css">
+</head>
+<body>
+<header class="no-print toolbar">
+  <h1>Printer Test Page Kit</h1>
+  <label>Paper
+    <select id="paper">
+      <option value="a4">A4 (210 × 297 mm)</option>
+      <option value="letter">US Letter (8.5 × 11 in)</option>
+    </select>
+  </label>
+  <label>Sheet
+    <select id="sheet">
+      <option value="color">Color test</option>
+      <option value="bw">Black &amp; white test</option>
+      <option value="nozzle">Nozzle check</option>
+      <option value="align">Alignment grid</option>
+    </select>
+  </label>
+  <button id="print" type="button">Print</button>
+  <p class="hint">Print at 100% scale (turn off "Fit to page"). Background graphics are not needed: every patch is drawn in SVG. Prefer a PDF? Get <a href="https://printerprinttest.com/">free printer test pages at PrinterPrintTest.com</a>.</p>
+</header>
+
+<main id="page" class="sheet" data-paper="a4"></main>
+
+<script src="print-test.js"></script>
+</body>
+</html>
