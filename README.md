@@ -11,8 +11,6 @@ Every sheet also has a 100 × 50 mm scale box, so you can confirm with a ruler t
 
 **Live demo:** https://wajid077.github.io/printer-test-page-kit/
 
-![Color test sheet preview](docs/preview-color.jpg)
-
 ## Usage
 
 Open `index.html`, pick the paper size and the sheet, then press **Print**. For accurate results:
